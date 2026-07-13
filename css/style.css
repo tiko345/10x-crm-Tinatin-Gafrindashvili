@@ -1,0 +1,25 @@
+/* Error: Module loop: this module is already being loaded.
+ *   ,--> scss/pages/_client.scss
+ * 1 | @use "../abstracts/" as *;
+ *   | ^^^^^^^^^^^^^^^^^^^^^^^^^ new load
+ *   '
+ *   ,--> scss/style.scss
+ * 1 | @use "./abstracts/" as *;
+ *   | ======================== original load
+ *   '
+ *   scss/pages/_client.scss 1:1         @forward
+ *   scss/pages/_index.scss 1:1          @use
+ *   scss/abstracts/_variables.scss 1:1  @forward
+ *   scss/abstracts/_index.scss 1:1      @use
+ *   scss/style.scss 1:1                 root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Module loop: this module is already being loaded.\a   \250c \2500 \2500 > scss/pages/_client.scss\a 1 \2502  @use "../abstracts/" as *;\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^ new load\a   \2575 \a   \250c \2500 \2500 > scss/style.scss\a 1 \2502  @use "./abstracts/" as *;\a   \2502  \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501  original load\a   \2575 \a   scss/pages/_client.scss 1:1         @forward\a   scss/pages/_index.scss 1:1          @use\a   scss/abstracts/_variables.scss 1:1  @forward\a   scss/abstracts/_index.scss 1:1      @use\a   scss/style.scss 1:1                 root stylesheet';
+}
