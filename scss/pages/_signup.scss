@@ -1,1 +1,86 @@
-@use "../abstracts/" as *;
+@use "../abstracts" as *;
+
+
+body{
+    background-color: var(--color-bg);
+}
+
+
+#theme-toggle {
+    padding: 1rem;
+    a{
+        display: flex;
+        justify-content: flex-end;
+        img{
+            width:var(--icon-size);
+            height:var(--icon-size);
+            border-radius: 50%;
+            padding: var(--icon-padding);
+        }
+        img:hover{
+            cursor: pointer;
+            background-color: var(--color-hover);
+        }
+    }
+}
+.signup-page{
+    @include flex-row;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    margin: 0 5rem;
+    color: var(--color-text);
+    height: 85vh;
+    section{
+        @include flex-column;
+    }
+}
+
+.left-section{
+    display: flex;
+    background-color: var(--color-bg2);
+    width: 100%;
+    color: var(--color-text2);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    justify-content: space-between;
+    padding-left: 1rem;
+    flex: 4;    
+    span{
+        padding-bottom: 1rem;
+    }
+}
+.form-section{
+    background-color: var(--color-bg-card);
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    flex:6;
+    .input-group{
+    @include flex-column;
+
+    input{
+        height: 2rem;
+        width: 400px;
+        border: 1px solid var(--color-border);
+        border-radius: 5px;
+        background-color: var(--color-bg);
+        padding: 3px;
+    }
+    label{
+        padding:3px;
+    }
+    }
+    button{
+        margin-top:1rem;
+        height: 2rem;
+        width:405px;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--color-accent);
+        color: var(--color-text);
+        font-weight: bold;
+    }
+}
+
