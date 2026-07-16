@@ -129,5 +129,6 @@ window.auth = {
     validatePassword,
     validateConfirmPassword,
     emailExists,
-    registerUser
+    registerUser,
+    getUsers
 };
