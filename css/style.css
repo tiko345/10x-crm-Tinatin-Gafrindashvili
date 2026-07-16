@@ -108,6 +108,7 @@ body {
   border-radius: 5px;
   background-color: var(--color-bg);
   padding: 3px;
+  color: var(--color-text);
 }
 .form-section .input-group label {
   padding: 3px;
@@ -121,6 +122,20 @@ body {
   background-color: var(--color-accent);
   color: var(--color-text);
   font-weight: bold;
+}
+.form-section .error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+.success-banner {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-60%);
+  font-size: 1.5rem;
+  color: var(--color-text);
 }
 
 /*# sourceMappingURL=style.css.map */
