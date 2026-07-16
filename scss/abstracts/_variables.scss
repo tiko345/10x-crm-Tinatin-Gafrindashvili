@@ -1,0 +1,41 @@
+:root{
+    --color-bg-light: #faf6f1;
+    --color-bg-dark:#2c1a0e;
+    --color-border-light:#E8DDD0;
+    --color-border-dark: #1a0f08;
+    --color-text-light:#f5ede0;
+    --color-text-dark:#09090b;
+    --color-accent:#e69111;
+    --color-bg-card-light:#FFFFFF;
+    --color-bg-card-dark:#3d230e;
+    --color-hover-light:#3d241029;
+    --color-hover-dark: #3d2410;
+    --icon-size-light: 20px;
+    --icon-size-dark: 40px;
+    --icon-padding-light: 7px;
+    --icon-padding-dark: 0px;
+
+    --color-bg: var(--color-bg-light);
+    --color-text: var(--color-text-dark);
+    --color-border: var(--color-border-light);
+    --color-bg2:var(--color-bg-card-dark);
+    --color-text2:var(--color-text-light);
+    --color-bg-card:var(--color-bg-card-light);
+    --color-hover: var(--color-hover-light);
+    --icon-size: var(--icon-size-light);
+    --icon-padding: var(--icon-padding-light);
+}
+
+body.dark{
+    --color-bg: var(--color-bg-dark);
+    --color-text: var(--color-text-light);
+    --color-border: var(--color-border-dark);
+    --color-bg2:var(--color-border-dark);
+    --color-text2:var(--color-text-light);
+    --color-bg-card:var(--color-bg-card-dark);
+    --color-hover: var(--color-hover-dark);
+    --icon-size: var(--icon-size-dark);
+    --icon-padding: var(--icon-padding-dark);
+}
+
+
