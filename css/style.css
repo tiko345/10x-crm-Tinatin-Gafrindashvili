@@ -70,20 +70,21 @@ body {
   background-color: var(--color-bg);
 }
 
-#theme-toggle {
+.theme-toggle-cont {
   padding: 1rem;
-}
-#theme-toggle a {
   display: flex;
   justify-content: flex-end;
 }
-#theme-toggle a img {
+.theme-toggle-cont #theme-toggle {
+  display: flex;
+}
+.theme-toggle-cont #theme-toggle img {
   width: var(--icon-size);
   height: var(--icon-size);
   border-radius: 50%;
   padding: var(--icon-padding);
 }
-#theme-toggle a img:hover {
+.theme-toggle-cont #theme-toggle img:hover {
   cursor: pointer;
   background-color: var(--color-hover);
 }
