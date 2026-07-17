@@ -84,3 +84,44 @@
         color:var(--color-text2);
     }
 }
+
+.stat-cards, .pipeline-stages{
+    @include flex-row;
+    gap:7px;
+    flex-wrap: wrap;
+    .stat-card{
+        @include flex-column;
+        justify-content: center;
+        align-items: center;
+        flex:1;
+        height:100px;
+        background-color: var(--color-bg2);
+        border-radius: 10px;
+        margin:0 5px;
+        color: var(--color-text2);
+    }
+}
+.stage{
+    width:180px;
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text2);
+    height:100px;
+    background-color: var(--color-bg2);
+    border-radius: 10px;
+    margin:0 5px;
+    
+}
+
+.overview-cont{
+    @include flex-row;
+    gap:7px;
+}
+.pipeline-overview{
+    height:500px;
+    flex:1;
+}
+.recent-clients{
+    flex:1;
+}

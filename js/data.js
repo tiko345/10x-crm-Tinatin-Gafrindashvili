@@ -1,5 +1,4 @@
 async function loadClients() {
-
     // Check localStorage first
     const savedClients = localStorage.getItem("crm_clients");
 
@@ -68,4 +67,5 @@ async function loadClients() {
         return [];
 
     }
+    
 }

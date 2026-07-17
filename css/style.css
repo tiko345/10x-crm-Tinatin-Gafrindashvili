@@ -1,5 +1,5 @@
 :root {
-  --color-bg-light: #faf6f1;
+  --color-bg-light: #fbefe0;
   --color-bg-dark:#2c1a0e;
   --color-border-light:#E8DDD0;
   --color-border-dark: #1a0f08;
@@ -120,6 +120,53 @@ body.dark {
   padding: 10px;
   border-radius: 10px;
   color: var(--color-text2);
+}
+
+.stat-cards, .pipeline-stages {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.stat-cards .stat-card, .pipeline-stages .stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 100px;
+  background-color: var(--color-bg2);
+  border-radius: 10px;
+  margin: 0 5px;
+  color: var(--color-text2);
+}
+
+.stage {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text2);
+  height: 100px;
+  background-color: var(--color-bg2);
+  border-radius: 10px;
+  margin: 0 5px;
+}
+
+.overview-cont {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+}
+
+.pipeline-overview {
+  height: 500px;
+  flex: 1;
+}
+
+.recent-clients {
+  flex: 1;
 }
 
 .login-page {
