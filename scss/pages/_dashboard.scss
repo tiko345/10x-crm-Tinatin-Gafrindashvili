@@ -1,3 +1,71 @@
 @use "../abstracts" as *;
 
 
+
+//aside style
+.content{
+    @include flex-row;
+}
+
+.sidebar{
+    @include flex-column;
+    justify-content: space-between;
+    align-items: center;
+    width:20vw;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--color-bg2);
+    color:var(--color-text2);
+    .nav{
+        margin-top:40px;
+        ul{
+            margin-top:30px;
+            list-style: none;
+            a{
+                display: flex;
+                text-decoration: none;
+                color:var(--color-text2);
+                width:200px;
+                justify-content: center;
+                padding:5px;
+                border-radius: 5px;
+            }
+            .active{
+                background-color: var(--color-accent);
+            }
+        }
+    }
+}
+.main-content{
+    margin-left: 20vw;
+    width: 100vw;
+    height: auto;
+}
+
+.profile{
+    @include flex-row;
+    justify-content: space-between;
+    width: 250px;
+    margin-bottom:10px;
+    .profile-letter{
+        height: 15px;
+        padding: 10px;
+        border-radius: 50%;
+        background-color: var(--color-accent);
+        transform: translateX(30px);
+    }
+    .profile-info{
+        font-size: 14px ;
+    }
+    .logout{
+        background-color: transparent;
+        transform: translateX(-20px);
+        width:40px;
+        border-radius: 10px;
+        img{
+            width:20px;
+            height:20px;
+            
+        }
+    }
+}
