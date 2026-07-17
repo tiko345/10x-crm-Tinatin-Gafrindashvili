@@ -36,11 +36,6 @@
         }
     }
 }
-.main-content{
-    margin-left: 20vw;
-    width: 100vw;
-    height: auto;
-}
 
 .profile{
     @include flex-row;
@@ -67,5 +62,25 @@
             height:20px;
             
         }
+    }
+}
+
+//dashboard main content
+.main-content{
+    margin-left: 20vw;
+    width: 100vw;
+    height: auto;
+    color:var(--color-text);
+}
+.heading{
+    @include flex-row;
+    justify-content: space-between;
+    .clock{
+        margin:10px;
+        font-size: 20px;
+        background-color: var(--color-bg2);
+        padding: 10px;
+        border-radius: 10px;
+        color:var(--color-text2);
     }
 }
