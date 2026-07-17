@@ -95,6 +95,40 @@ async function updatePipelineOverview() {
   }
 }
 
+
+async function updateRecentClients() {
+  try {
+    const clients = await loadClients();
+
+    // sort by createdAt descending (newest first) and take top 5
+    const recentClients = [...clients]
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+      .slice(0, 5);
+
+    const container = document.getElementById("recent-clients-list");
+    container.innerHTML = "";
+
+    recentClients.forEach((client) => {
+      const row = document.createElement("div");
+      row.classList.add("client-row");
+
+      const formattedDate = new Date(client.createdAt).toLocaleDateString();
+
+      row.innerHTML = `
+        <span class="client-name">${client.name}</span>
+        <span class="client-company">${client.company}</span>
+        <span class="status-badge status-${client.status.toLowerCase()}">${client.status}</span>
+        <span class="client-date">${formattedDate}</span>
+      `;
+
+      container.appendChild(row);
+    });
+  } catch (error) {
+    console.error("Failed to update recent clients:", error);
+  }
+}
+
 // Call the function when the page loads
 document.addEventListener("DOMContentLoaded", updatePipelineOverview);
 document.addEventListener("DOMContentLoaded", updateStatCards);
+document.addEventListener("DOMContentLoaded", updateRecentClients);

@@ -21,6 +21,7 @@
   --color-text2:var(--color-text-light);
   --color-bg-card:var(--color-bg-card-light);
   --color-hover: var(--color-hover-light);
+  --color-border2: #000;
   --icon-size: var(--icon-size-light);
   --icon-padding: var(--icon-padding-light);
 }
@@ -33,6 +34,7 @@ body.dark {
   --color-text2:var(--color-text-light);
   --color-bg-card:var(--color-bg-card-dark);
   --color-hover: var(--color-hover-dark);
+  --color-border2:#fff;
   --icon-size: var(--icon-size-dark);
   --icon-padding: var(--icon-padding-dark);
 }
@@ -142,16 +144,16 @@ body.dark {
 }
 
 .stage {
-  width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: var(--color-text2);
   height: 100px;
+  width: 200px;
   background-color: var(--color-bg2);
   border-radius: 10px;
-  margin: 0 5px;
+  margin: 0 10px;
 }
 
 .overview-cont {
@@ -161,12 +163,45 @@ body.dark {
 }
 
 .pipeline-overview {
-  height: 500px;
   flex: 1;
+}
+.pipeline-overview h2 {
+  margin: 10px;
 }
 
 .recent-clients {
   flex: 1;
+}
+.recent-clients h2 {
+  margin: 10px;
+}
+
+.recents-header, .client-row {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.recents-header {
+  border-bottom: 1px solid var(--color-border2);
+}
+
+.client-row {
+  background-color: var(--color-bg2);
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 10px;
+  color: var(--color-text2);
+}
+
+.view-all-link {
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+  color: var(--color-text2);
+  padding-top: 7px;
+  padding-right: 10px;
 }
 
 .login-page {
