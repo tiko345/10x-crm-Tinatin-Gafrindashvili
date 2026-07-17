@@ -6,11 +6,12 @@ body{
 }
 
 
-#theme-toggle {
+.theme-toggle-cont {
     padding: 1rem;
-    a{
+    display: flex;
+    justify-content: flex-end;
+    #theme-toggle{
         display: flex;
-        justify-content: flex-end;
         img{
             width:var(--icon-size);
             height:var(--icon-size);

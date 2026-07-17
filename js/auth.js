@@ -114,14 +114,6 @@ async function registerUser(user) {
 }
 
 
-// Check if "crm_users" exists in localStorage
-console.log(localStorage.getItem("crm_users"));
-
-// Parse and log the users array
-const users = JSON.parse(localStorage.getItem("crm_users")) || [];
-console.log(users);
-
-
 // Expose the functions to the global scope
 window.auth = {
     validateFullName,
