@@ -14,12 +14,12 @@ function validateFullName(name) {
 function validateEmail(email) {
     email = email.trim().toLowerCase(); //trim spaces and convert to lowercase
 
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //regular expression to validate email format
+    const emailOk = data.email && data.email.includes("@") && data.email.includes(".");
 
     if (email === "") {
         return "Email is required";
     }
-    if (!regex.test(email)) {
+    if (!emailOk.test(email)) {
         return "Please enter a valid email address";
     }
 

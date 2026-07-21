@@ -128,8 +128,6 @@ form.addEventListener("submit", (e) => {
         return;
 
     }
-
-
     //creates a session object with the user's id, full name, email, and login time
     auth.setSession({
 

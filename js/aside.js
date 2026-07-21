@@ -1,3 +1,7 @@
+// Strictly check for session on page load
+if (!auth.isLoggedIn()) {
+    window.location.href = "index.html";
+}
 document.addEventListener("DOMContentLoaded", () => {
     fetch("aside.html")
         .then(response => response.text())
