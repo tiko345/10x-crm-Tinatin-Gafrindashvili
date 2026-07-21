@@ -11,6 +11,12 @@
     <aside id="aside-placeholder"></aside>
 
     <main class="main-content">
+        <div class="theme-toggle-cont">
+            <a href="#" id="theme-toggle">
+                <img src="./assets/sleep-mode.svg" alt="theme icon" id="theme-icon">
+            </a>
+        </div>
+
          <header class="page-header">
             <h1>Clients</h1>
             <button id="add-client-btn" type="button">+ Add Client</button>
@@ -28,11 +34,12 @@
             >
 
             <div id="filter-chips" class="filter-chips">
-            <button type="button" class="chip" data-status="All">All</button>
-            <button type="button" class="chip" data-status="Lead">Lead</button>
-            <button type="button" class="chip" data-status="Contacted">Contacted</button>
-            <button type="button" class="chip" data-status="Won">Won</button>
-            <button type="button" class="chip" data-status="Lost">Lost</button>
+                <div>status:</div>
+                <button type="button" class="chip active" data-status="All">All</button>
+                <button type="button" class="chip" data-status="Lead">Lead</button>
+                <button type="button" class="chip" data-status="Contacted">Contacted</button>
+                <button type="button" class="chip" data-status="Won">Won</button>
+                <button type="button" class="chip" data-status="Lost">Lost</button>
             </div>
 
             <select id="sort-select">
@@ -80,14 +87,13 @@
 
         <div id="add-client-modal" class="modal" hidden>
             <div class="modal-backdrop"></div>
-
             <div class="modal-content">
             <button type="button" class="modal-close" aria-label="Close">×</button>
 
             <h2>Add Client</h2>
 
             <form id="add-client-form" novalidate>
-
+                
                 <label for="field-name">Name</label>
                 <input id="field-name" name="name" type="text">
                 <p class="field-error" data-for="field-name"></p>
@@ -95,18 +101,18 @@
                 <label for="field-email">Email</label>
                 <input id="field-email" name="email" type="email">
                 <p class="field-error" data-for="field-email"></p>
-
+               
                 <label for="field-phone">Phone</label>
                 <input id="field-phone" name="phone" type="text">
                 <p class="field-error" data-for="field-phone"></p>
-
+                
                 <label for="field-company">Company</label>
                 <input id="field-company" name="company" type="text">
-
+              
                 <label for="field-deal-value">Deal Value</label>
                 <input id="field-deal-value" name="dealValue" type="number">
                 <p class="field-error" data-for="field-deal-value"></p>
-
+                
                 <label for="field-status">Status</label>
                 <select id="field-status" name="status">
                 <option value="Lead" selected>Lead</option>
@@ -114,7 +120,6 @@
                 <option value="Won">Won</option>
                 <option value="Lost">Lost</option>
                 </select>
-
                 <button type="submit">Add Client</button>
             </form>
             </div>
@@ -128,19 +133,24 @@
 
             <div class="details-header">
                 <img class="avatar" src="" alt="">
-                <h2 class="details-name"></h2>
-                <p class="details-company"></p>
-                <p class="details-email"></p>
-                <p class="details-phone"></p>
-                <span class="details-status"></span>
-                <p class="details-deal-value"></p>
-                <p class="details-since"></p>
+                <div>
+                    <h2 class="details-name"></h2>
+                    <p class="details-company"></p>
+                    <p class="details-email"></p>
+                    <p class="details-phone"></p>
+                </div>
+                <div>
+                    <span class="details-status"></span>
+                    <p class="details-deal-value"></p>
+                    <p class="details-since"></p>
+                </div>
             </div>
 
             <div class="notes-section">
-                <h3>Notes</h3>
-                <ul id="notes-list"></ul>
-
+                <div>
+                    <h3>Notes</h3>
+                    <ul id="notes-list"></ul>
+                </div>
                 <div class="add-note-row">
                 <input id="note-input" type="text" placeholder="Write a note...">
                 <button id="add-note-btn" type="button">Add note</button>

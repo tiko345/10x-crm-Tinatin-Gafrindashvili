@@ -319,7 +319,9 @@ async function handleDelete(id) {
 function openDetailsModal(id) {
     currentDetailsClientId = id;
     const client = clients.find(c => c.id === id);
-    if (!client) return;
+    if (!client){
+        return;
+    }
 
     detailsModal.querySelector(".avatar").src = client.image || "";
     detailsModal.querySelector(".details-name").textContent = client.name;
@@ -333,12 +335,19 @@ function openDetailsModal(id) {
 
     renderNotes(client);
     noteInput.value = "";
-
     detailsModal.hidden = false;
 }
 
 function renderNotes(client) {
     notesList.innerHTML = "";
+
+    if (client.notes.length === 0) {
+        const li = document.createElement("li");
+        li.className = "no-notes";
+        li.textContent = "No notes yet";
+        notesList.appendChild(li);
+        return;
+    }
     client.notes.forEach(note => {
         const li = document.createElement("li");
         li.textContent = `${note.text} — ${note.date}`;
@@ -353,6 +362,7 @@ function handleAddNote() {
     //finds the client to add notes
     const client = clients.find(c => c.id === currentDetailsClientId);
     if (!client) return;
+
     client.notes.push({
         text,
         date: new Date().toLocaleString()
