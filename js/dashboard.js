@@ -1,3 +1,8 @@
+// Strictly check for session on page load
+if (!auth.isLoggedIn()) {
+    window.location.href = "index.html";
+}
+
 // Get username from session
 const session = JSON.parse(localStorage.getItem("crm_session"));
 

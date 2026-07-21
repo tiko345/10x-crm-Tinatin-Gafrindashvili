@@ -131,23 +131,16 @@ form.addEventListener("submit", (e) => {
 
 
     //creates a session object with the user's id, full name, email, and login time
-    const session = {
+    auth.setSession({
 
         id: user.id,
         fullName: user.fullName,
         email: user.email,
         loginTime: new Date().toISOString() // ISO format for consistency
 
-    };
-
-    // Store session in localStorage
-    localStorage.setItem(
-        "crm_session",
-        JSON.stringify(session)
-    );
-
-
-
+    });
+    //restore user cllient info
+    auth.loadUserClients(user.id); 
     // Redirects to dashboard.html after successful login
     window.location.href = "dashboard.html";
 

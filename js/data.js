@@ -1,5 +1,10 @@
 async function loadClients() {
     // Check localStorage first
+    const session = auth.getSession();
+    if(!session){
+        window.location.href = "index.html";
+        return [];
+    }
     const savedClients = localStorage.getItem("crm_clients");
 
     if (savedClients) {
@@ -16,11 +21,7 @@ async function loadClients() {
         if (!response.ok) {
             throw new Error("Failed to load clients");
         }
-
-
         const data = await response.json();
-
-
         const clients = data.users.map(user => {
 
             return {
@@ -56,7 +57,6 @@ async function loadClients() {
             JSON.stringify(clients)
         );
 
-
         return clients;
 
 
@@ -64,7 +64,7 @@ async function loadClients() {
 
         console.log(error);
 
-        return [];
+        throw error;
 
     }
     

@@ -36,13 +36,9 @@ function initializeSidebar() {
         }
     });
 
-    //logout button 
-    const logoutBtn = document.querySelector(".logout");
-
+    //logout button
+   const logoutBtn = document.querySelector(".logout");
     if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-            localStorage.removeItem("crm_session");
-            window.location.href = "index.html";
-        });
+        logoutBtn.addEventListener("click", auth.logout);
     }
 }
