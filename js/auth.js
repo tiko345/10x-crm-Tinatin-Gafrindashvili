@@ -1,5 +1,4 @@
 //validation functions
-
 function validateFullName(name) {
     name = name.trim(); //trim spaces
     if (name === "") {
@@ -15,12 +14,12 @@ function validateFullName(name) {
 function validateEmail(email) {
     email = email.trim().toLowerCase(); //trim spaces and convert to lowercase
 
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //regular expression to validate email format
+    const emailOk = data.email && data.email.includes("@") && data.email.includes(".");
 
     if (email === "") {
         return "Email is required";
     }
-    if (!regex.test(email)) {
+    if (!emailOk.test(email)) {
         return "Please enter a valid email address";
     }
 
@@ -95,14 +94,8 @@ async function registerUser(user) {
             const errorData = await response.json();
             throw new Error(errorData.error || `API request failed with status ${response.status}`);
         }
+        await response.json();
 
-        const responseData = await response.json();
-        // Use the API's ID if it returns one
-        if (responseData.id) {
-            user.id = responseData.id;
-        }
-
-        // Save to localStorage
         const users = getUsers();
         users.push(user);
         saveUsers(users);
@@ -113,6 +106,55 @@ async function registerUser(user) {
     }
 }
 
+function setSession(user) {
+    localStorage.setItem("crm_session", JSON.stringify(user));
+}
+
+function getSession() {
+    const session = localStorage.getItem("crm_session");
+    return session ? JSON.parse(session) : null;
+}
+
+function clearSession() {
+    localStorage.removeItem("crm_session");
+}
+
+function isLoggedIn() {
+    return getSession() !== null;
+}
+
+// Call this right after setSession(user) succeeds on login
+function loadUserClients(userId) {
+    const archived = localStorage.getItem(`crm_clients_archive_${userId}`);
+    if (archived) {
+        localStorage.setItem("crm_clients", archived);
+    } else {
+        localStorage.removeItem("crm_clients"); // new account, nothing archived yet
+    }
+}
+
+// Call this inside logout(), before clearing the session
+function archiveUserClients(userId) {
+    const current = localStorage.getItem("crm_clients");
+    if (current) {
+        localStorage.setItem(`crm_clients_archive_${userId}`, current);
+    }
+}
+
+
+function logout() {
+    const session = getSession();
+
+    if (session) {
+        archiveUserClients(session.id);
+    }
+
+    // wipe the active key so no client data sits exposed while logged out
+    localStorage.removeItem("crm_clients");
+
+    clearSession();
+    window.location.href = "index.html";
+}
 
 // Expose the functions to the global scope
 window.auth = {
@@ -122,5 +164,11 @@ window.auth = {
     validateConfirmPassword,
     emailExists,
     registerUser,
-    getUsers
+    getUsers,
+    setSession,
+    getSession,
+    clearSession,
+    isLoggedIn,
+    logout,
+    loadUserClients,
 };

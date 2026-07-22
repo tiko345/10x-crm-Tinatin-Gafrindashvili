@@ -1,3 +1,7 @@
+// Strictly check for session on page load
+if (!auth.isLoggedIn()) {
+    window.location.href = "index.html";
+}
 document.addEventListener("DOMContentLoaded", () => {
     fetch("aside.html")
         .then(response => response.text())
@@ -36,13 +40,9 @@ function initializeSidebar() {
         }
     });
 
-    //logout button 
-    const logoutBtn = document.querySelector(".logout");
-
+    //logout button
+   const logoutBtn = document.querySelector(".logout");
     if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-            localStorage.removeItem("crm_session");
-            window.location.href = "index.html";
-        });
+        logoutBtn.addEventListener("click", auth.logout);
     }
 }

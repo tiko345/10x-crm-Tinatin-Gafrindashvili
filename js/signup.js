@@ -1,3 +1,7 @@
+if (auth.isLoggedIn()) {
+    window.location.href = "dashboard.html";
+}
+
 const form = document.getElementById("signup-form");
 
 const fullName = document.getElementById("fullName");
