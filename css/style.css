@@ -227,6 +227,9 @@ button {
   font-size: 15px;
   padding: 0;
 }
+.modal {
+  animation: toast-in 0.25s ease-in;
+}
 
 #toast-container:empty {
   padding: 0;
@@ -243,7 +246,7 @@ button {
   border: none;
   border-radius: 5px;
   width: 70%;
-  animation: toast-in 5s ease-in;
+  animation: toast-in 0.25s ease-in;
 }
 
 @keyframes toast-in {

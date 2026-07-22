@@ -184,6 +184,7 @@ button{
         }
         
     }
+    animation: toast-in 0.25s ease-in;
 }
 
 
@@ -203,7 +204,7 @@ button{
     border-radius: 5px;
     width: 70%;
 
-    animation: toast-in 5s ease-in;
+    animation: toast-in 0.25s ease-in;
 }
 
 @keyframes toast-in {
