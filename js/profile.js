@@ -1,4 +1,3 @@
-
 const editProfileForm = document.getElementById('edit-profile-form');
 const changePasswordForm = document.getElementById('change-password-form');
 const resetCRMDataBtn = document.getElementById('reset-crm-data-btn');
@@ -9,13 +8,16 @@ const currentPasswordError = document.getElementById('current-password-error');
 const newPasswordError = document.getElementById('new-password-error');
 const confirmPasswordError = document.getElementById('confirm-password-error');
 
-const users = JSON.parse(localStorage.getItem("crm_users")) || [];
-const session = JSON.parse(localStorage.getItem("crm_session"));
+function getCurrentUser() {
+    const users = JSON.parse(localStorage.getItem("crm_users")) || [];
+    const session = JSON.parse(localStorage.getItem("crm_session"));
+    return users.find(user => user.email === session.email);
+}
 
-const currentUser = users.find(user => user.email === session.email);
 
 // Initialize the profile page with user data
 function initializeProfilePage() {
+    const currentUser = getCurrentUser();
     if (!currentUser) {
         window.location.href = 'index.html';
         return;
@@ -46,6 +48,7 @@ function validateFullName(fullName) {
 
 // Validate Password
 function validatePassword(currentPassword, newPassword, confirmPassword) {
+    const currentUser = getCurrentUser();
     let isValid = true;
 
     // Current Password
@@ -86,6 +89,16 @@ editProfileForm.addEventListener('submit', (e) => {
 
     if (!validateFullName(fullName)) return;
 
+    // Load the current users list and session fresh from localStorage
+    const users = JSON.parse(localStorage.getItem("crm_users")) || [];
+    const session = JSON.parse(localStorage.getItem("crm_session"));
+    const currentUser = users.find(user => user.email === session.email);
+
+    if (!currentUser) {
+        window.location.href = 'index.html';
+        return;
+    }
+
     // Update user data
     currentUser.fullName = fullName;
     currentUser.company = company;
@@ -96,14 +109,18 @@ editProfileForm.addEventListener('submit', (e) => {
     const initials = fullName.split(' ').map(name => name[0]).join('').toUpperCase();
     document.getElementById('avatar-initials').textContent = initials;
 
-    // Save to localStorage 
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    // Save updated users array back to localStorage
+    localStorage.setItem('crm_users', JSON.stringify(users));
+
+    // Keep session in sync with the new name
+    session.fullName = fullName;
+    localStorage.setItem('crm_session', JSON.stringify(session));
 
     // Show toast 
     alert('Profile updated ✓');
 });
 
-// Handle Change Password (B)
+// Handle Change Password 
 changePasswordForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const currentPassword = document.getElementById('current-password').value;
@@ -112,11 +129,21 @@ changePasswordForm.addEventListener('submit', (e) => {
 
     if (!validatePassword(currentPassword, newPassword, confirmPassword)) return;
 
+    // Load the current users list and session fresh from localStorage
+    const users = JSON.parse(localStorage.getItem("crm_users")) || [];
+    const session = JSON.parse(localStorage.getItem("crm_session"));
+    const currentUser = users.find(user => user.email === session.email);
+
+    if (!currentUser) {
+        window.location.href = 'index.html';
+        return;
+    }
+
     // Update password
     currentUser.password = newPassword;
 
-    // Save to localStorage 
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    // Save updated users array back to localStorage
+    localStorage.setItem('crm_users', JSON.stringify(users));
 
     // Clear form
     changePasswordForm.reset();

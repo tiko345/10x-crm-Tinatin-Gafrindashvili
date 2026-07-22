@@ -453,6 +453,74 @@ button {
   font-weight: 700;
 }
 
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.profile-container .info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--color-hover);
+  padding: 4rem 4rem 6rem 4rem;
+  border-radius: 10px;
+  color: var(--color-text);
+  font-size: 22px;
+  max-height: 200px;
+}
+.profile-container .info-block .user-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.profile-container .info-block .user-info .avatar {
+  display: inline-block;
+  background-color: var(--color-accent);
+  padding: 10px;
+  border-radius: 50%;
+  margin: 5px;
+}
+.profile-container .edit-profile-form, .profile-container .change-password-form, .profile-container .reset-data-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  gap: 2rem;
+  background-color: var(--color-hover);
+  padding: 4rem 4rem 6rem 4rem;
+  border-radius: 10px;
+  color: var(--color-text);
+}
+.profile-container .edit-profile-form .form-group, .profile-container .change-password-form .form-group, .profile-container .reset-data-section .form-group {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+}
+.profile-container .edit-profile-form .form-group input, .profile-container .change-password-form .form-group input, .profile-container .reset-data-section .form-group input {
+  width: 450px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid var(--color-border);
+  padding-left: 5px;
+  margin: 5px 0;
+}
+.profile-container .edit-profile-form h3, .profile-container .change-password-form h3, .profile-container .reset-data-section h3 {
+  margin: 10px 0;
+}
+.profile-container .edit-profile-form button, .profile-container .change-password-form button, .profile-container .reset-data-section button {
+  padding: 7px;
+  max-width: 200px;
+  margin: 5px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+}
+.profile-container .error-message {
+  color: red;
+  font-size: 14px;
+}
+
 body {
   background-color: var(--color-bg);
 }

@@ -218,8 +218,8 @@ function validateAddClientForm(data) {
         valid = false;
     }
 
-    const emailOk = data.email && data.email.includes("@") && data.email.includes(".");
-    if (!emailOk) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex) {
         setFieldError("field-email", "Please enter a valid email address");
         valid = false;
     } else if (clients.some(c => c.email.toLowerCase() === data.email.toLowerCase())) {
