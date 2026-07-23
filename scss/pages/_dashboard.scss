@@ -18,6 +18,11 @@
     color:var(--color-text2);
     .nav{
         margin-top:40px;
+        a{
+            text-decoration: none;
+            cursor: pointer;
+            color: var(--color-accent);
+        }
         ul{
             margin-top:30px;
             list-style: none;
