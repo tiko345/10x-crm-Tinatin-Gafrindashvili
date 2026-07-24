@@ -244,10 +244,17 @@ function validateAddClientForm(data) {
 async function handleAddClientSubmit(e) {
     e.preventDefault();
 
+    // Disable the submit button to prevent multiple submissions
+    const submitBtn = addClientForm.querySelector("button[type='submit']");
+    submitBtn.disabled = true;
+
     const formData = new FormData(addClientForm);
     const data = Object.fromEntries(formData.entries());
 
-    if (!validateAddClientForm(data)) return; //validate form
+    if (!validateAddClientForm(data)){
+        submitBtn.disabled = false;
+        return; //validate form
+    }
 
     const payload = {
         name: data.name.trim(),
@@ -289,6 +296,9 @@ async function handleAddClientSubmit(e) {
     } catch (err) {
         console.log(err);
         showToast("Could not add client. Try again.");//error toast
+    }finally {
+        // Re-enable the submit button after submission 
+        submitBtn.disabled = false;
     }
 }
 
