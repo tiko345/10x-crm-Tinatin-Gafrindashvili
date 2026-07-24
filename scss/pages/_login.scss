@@ -15,17 +15,6 @@
     
 }
 
-.label-forgot{
-    @include flex-row;
-    justify-content: space-between;
-    .forgot-pass{
-        color: var(--color-accent);
-        text-decoration: none;
-        font-size: 0.8rem;
-        padding-top: 0.5rem;
-        margin:0;
-        font-weight: 700;
-    }
-}
+
 
 

@@ -25,8 +25,6 @@ function initializeSidebar() {
         document.getElementById("profile-name").textContent =
             session.fullName;
 
-        document.getElementById("profile-email").textContent =
-            session.email;
     }
 
     // Active link

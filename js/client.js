@@ -219,7 +219,7 @@ function validateAddClientForm(data) {
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex) {
+    if (!emailRegex.test(data.email)) {
         setFieldError("field-email", "Please enter a valid email address");
         valid = false;
     } else if (clients.some(c => c.email.toLowerCase() === data.email.toLowerCase())) {
@@ -268,12 +268,13 @@ async function handleAddClientSubmit(e) {
         const result = await response.json();
 
         const newClient = {
-            id: result.id,
+            //make sure ids are unique
+            id: result.id + Date.now().toString() + Math.floor(Math.random() * 10000),
             name: payload.name,
             email: payload.email,
             phone: payload.phone,
             company: payload.company,
-            image: "",
+            image: "https://dummyjson.com/icon/jamesd/128",
             status: payload.status,
             dealValue: payload.dealValue,
             notes: [],
