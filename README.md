@@ -6,6 +6,10 @@ A simple, client-side CRM (Client Relationship Management) system built with HTM
 
 [App Live Demo](https://10x-crm-tinatin-gafrindashvili.vercel.app)
 
+Demo User:
+email: demo@test.com
+password: demo1234
+
 ##  Features
 - Add Clients: Add new clients with details like name, email, phone, company, and deal value.
 - View Clients: Display clients in a card-based layout.

@@ -1,3 +1,24 @@
+//add demo user
+const demoUser = {
+    id: "demo-1",
+    fullName: "Demo",
+    email: "demo@test.com",
+    password: "demo1234",
+};
+
+function addDemoUserIfNotExists() {
+    const users = getUsers();
+    const demoUserExists = users.some(user => user.email === demoUser.email);
+    if (!demoUserExists) {
+        users.push(demoUser);
+        saveUsers(users);
+    }
+}
+
+// Call the function when the script loads
+addDemoUserIfNotExists();
+
+
 //validation functions
 function validateFullName(name) {
     name = name.trim(); //trim spaces
